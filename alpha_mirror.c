@@ -25,3 +25,9 @@
 // $>./alpha_mirror | cat -e
 // $
 // $>
+
+int main(int ac, char **av)
+{
+    int a[26] = "abcdefghijklmnopkrstuvwxyz";
+    
+}
