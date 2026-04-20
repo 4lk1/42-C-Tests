@@ -21,3 +21,34 @@
 //     void            *data;
 // }                   t_list;
 // $>
+
+#include <stdlib.h>
+#include <ft_list.h>
+
+void ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)())
+{
+    t_list *temp;
+    t_list *actual;
+
+    if(!begin_list || !*begin_list)
+    return;
+    while(*begin_list && cmp((*begin_list) -> data, data_ref) == 0)
+    {
+        temp = begin_list;
+        *begin_list = (*begin_list) -> next;
+        free(temp);
+    }
+    actual = *begin_list;
+    while(actual && actual -> next)
+    {
+        if(cmp(actual -> data, data_ref) == 0)
+        {
+            temp = actual->next;
+            actual ->next = actual ->next ->next;
+            free(temp);
+        }
+        else
+        actual = actual->next; 
+    }
+
+}

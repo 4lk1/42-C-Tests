@@ -11,3 +11,27 @@
 // Your function must be declared as follows:
 
 // int	ft_atoi(const char *str);
+
+#include <unistd.h>
+
+int	ft_atoi(const char *str)
+{
+	long int a;
+    int s = 1;
+	int i = 0;
+
+    while(str[i] == " " || str[i] == "\t")
+        i++;
+    if(str[i] == "-")
+    {
+        s = s*(-1);
+        i++;
+    }
+    while(*str)
+    {
+        if(str[i] >= "1" && str[i]<= "9")
+        a = (a*10)+(str[i] + '0');
+        i++;
+    }
+    return a*s;
+}
