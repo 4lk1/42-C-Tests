@@ -10,7 +10,8 @@
 
 // If the number is a multiple of 5, it prints 'buzz' instead.
 
-// If the number is both a multiple of 3 and a multiple of 5, it prints 'fizzbuzz' instead.
+// If the number is both a multiple of 3 and a multiple of 5,
+//it prints 'fizzbuzz' instead.
 
 // Example:
 
@@ -36,3 +37,34 @@
 // fizz
 // buzz
 // $>
+
+#include <unistd.h>
+
+void ft_nr(int a)
+{
+	char	n;
+
+	if (a / 10 != 0)
+		ft_nr(a / 10);
+	n = (a % 10) + '0';
+	write(1, &n, 1);
+}
+
+int	main(void)
+{
+	int i = 1;
+	while (i <= 100)
+	{
+		if (i % 3 == 0 && i % 5 == 0)
+			write(1, "fizzbuzz", 8);
+		else if (i % 3 == 0)
+			write(1, "fizz", 4);
+		else if (i % 5 == 0)
+			write(1, "buzz", 4);
+		else
+			ft_nr(i);
+		write(1, "\n", 1);
+		i++;
+	}
+	return (0);
+}

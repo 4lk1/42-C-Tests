@@ -22,3 +22,18 @@
 //     struct s_list *next;
 //     void          *data;
 // }                 t_list;
+
+#include "ft_list.h"
+#include <stdlib.h>
+
+void	ft_list_foreach(t_list *begin_list, void (*f)(void *))
+{
+	if (!begin_list || !f)
+		return ;
+
+	while (begin_list)
+	{
+		f(begin_list->data);
+		begin_list->next;
+	}
+}

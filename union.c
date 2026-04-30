@@ -25,3 +25,62 @@
 // $>./union "rien" | cat -e
 // $
 // $>
+
+#include <unistd.h>
+
+int	seen_before(char *str, char c, int index)
+{
+	int	i = 0;
+
+	while (i < index)
+	{
+		if (str[i] == c)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	in_first(char *str, char c)
+{
+	int	i = 0;
+
+	while (str[i])
+	{
+		if (str[i] == c)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	main(int ac, char **av)
+{
+	int	i;
+
+	if (ac == 3)
+	{
+		i = 0;
+
+		// print unique chars from av[1]
+		while (av[1][i])
+		{
+			if (!seen_before(av[1], av[1][i], i))
+				write(1, &av[1][i], 1);
+			i++;
+		}
+
+		i = 0;
+
+		// print chars from av[2] not already in av[1]
+		while (av[2][i])
+		{
+			if (!in_first(av[1], av[2][i]) &&
+				!seen_before(av[2], av[2][i], i))
+				write(1, &av[2][i], 1);
+			i++;
+		}
+	}
+	write(1, "\n", 1);
+	return (0);
+}

@@ -16,22 +16,19 @@
 
 int	ft_atoi(const char *str)
 {
-	long int a;
-    int s = 1;
-	int i = 0;
+	int	rez;
+	int	i;
+	int	sn;
 
-    while(str[i] == " " || str[i] == "\t")
-        i++;
-    if(str[i] == "-")
-    {
-        s = s*(-1);
-        i++;
-    }
-    while(*str)
-    {
-        if(str[i] >= "1" && str[i]<= "9")
-        a = (a*10)+(str[i] + '0');
-        i++;
-    }
-    return a*s;
+	i = 0;
+    
+	while (str)
+	{
+        if (str[i] == "-")
+        sn = (-1);
+		while (str[i] >= "0" && str[i] <= "9")
+        {
+            rez = rez * 10 + str[i] -  
+        }
+	}
 }

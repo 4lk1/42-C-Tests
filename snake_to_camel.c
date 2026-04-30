@@ -19,3 +19,38 @@
 // helloWorld$
 // $>./snake_to_camel | cat -e
 // $
+
+#include <unistd.h>
+
+int	main(int ac, char **av)
+{
+	int		i = 0;
+	int		capitalize = 0;
+	char	c;
+
+	if (ac == 2)
+	{
+		while (av[1][i])
+		{
+			if (av[1][i] == '_')
+			{
+				capitalize = 1;
+			}
+			else
+			{
+				c = av[1][i];
+				if (capitalize && c >= 'a' && c <= 'z')
+				{
+					c = c - 32;
+					capitalize = 0;
+				}
+				else
+					capitalize = 0;
+				write(1, &c, 1);
+			}
+			i++;
+		}
+	}
+	write(1, "\n", 1);
+	return (0);
+}
