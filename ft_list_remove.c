@@ -22,33 +22,74 @@
 // }                   t_list;
 // $>
 
+#include "ft_list.h"
 #include <stdlib.h>
-#include <ft_list.h>
 
-void ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)())
+// void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)())
+// {
+// 	t_list	*tmp;
+// 	// Remove elements from the beginning if needed
+// 	while (*begin_list && cmp((*begin_list)->data, data_ref) == 0)
+// 	{
+// 		tmp = *begin_list;
+// 		*begin_list = (*begin_list)->next;
+// 		free(tmp);
+// 	}
+// 	// Traverse the rest of the list
+// 	while (*begin_list && (*begin_list)->next)
+// 	{
+// 		if (cmp((*begin_list)->next->data, data_ref) == 0)
+// 		{
+// 			tmp = (*begin_list)->next;
+// 			(*begin_list)->next = tmp->next;
+// 			free(tmp);
+// 		}
+// 		else
+// 			*begin_list = (*begin_list)->next;
+// 	}
+// }
+
+// void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)())
+// {
+// 	t_list	*temp;
+// 	while (*begin_list && cmp((*begin_list)->data, data_ref) == 0)
+// 	{
+// 		temp = *begin_list;
+// 		*begin_list = (*begin_list)->next;
+// 		free(temp);
+// 	}
+// 	while (*begin_list && (*begin_list)->next)
+// 	{
+// 		if (cmp((*begin_list)->next->data, data_ref) == 0)
+// 		{
+// 			temp = (*begin_list)->next;
+// 			(*begin_list)->next = temp->next;
+// 			free(temp);
+// 		}
+// 		else
+// 			(*begin_list) = (*begin_list)->next;
+// 	}
+// }
+
+void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)())
 {
-    t_list *temp;
-    t_list *actual;
+	t_list	*temp;
 
-    if(!begin_list || !*begin_list)
-    return;
-    while(*begin_list && cmp((*begin_list) -> data, data_ref) == 0)
-    {
-        temp = begin_list;
-        *begin_list = (*begin_list) -> next;
-        free(temp);
-    }
-    actual = *begin_list;
-    while(actual && actual -> next)
-    {
-        if(cmp(actual -> data, data_ref) == 0)
-        {
-            temp = actual->next;
-            actual ->next = actual ->next ->next;
-            free(temp);
-        }
-        else
-        actual = actual->next; 
-    }
-
+	while ((*begin_list) && cmp((*begin_list)->data, data_ref))
+	{
+		temp = *begin_list;
+		*begin_list = (*begin_list)->next;
+		free(temp);
+	}
+	while (*begin_list && (*begin_list)->next)
+	{
+		if (cmp((*begin_list)->next->data, data_ref) == 0)
+		{
+			temp = (*begin_list)->next;
+			(*begin_list)->next = temp->next;
+			free(temp);
+		}
+		else
+			(*begin_list) = (*begin_list)->next;
+	}
 }

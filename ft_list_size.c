@@ -19,17 +19,42 @@
 //     void          *data;
 // }                 t_list;
 
-#include <unistd.h>
 #include "ft_list.h"
+#include <unistd.h>
 
- int	ft_list_size(t_list *begin_list)
- {
-    int i = 0;
-    
-    while(begin_list)
-    {
-        i++;
-        begin_list = begin_list -> next;
-    }
-    return i;
- }
+//  int	ft_list_size(t_list *begin_list)
+//  {
+//     int i = 0;
+//     while(begin_list)
+//     {
+//         i++;
+//         begin_list = begin_list -> next;
+//     }
+//     return (i);
+//  }
+
+// int	ft_list_size(t_list *begin_list)
+// {
+//     int i = 0;
+//     if(!begin_list)
+//     return (i);
+//     while (begin_list)
+//     {
+//         i++;
+//         begin_list = begin_list->next;
+//     }
+//     return (i);
+// }
+
+int	ft_list_size(t_list *begin_list)
+{
+	int i = 0;
+	if (!begin_list)
+		return (0);
+	while (begin_list)
+	{
+		i++;
+		begin_list = begin_list->next;
+	}
+	return (i);
+}
