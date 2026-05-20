@@ -73,55 +73,55 @@
 // 	return (res);
 // }
 
-// #include <stdlib.h>
-// int	is_sep(char c)
-// {
-// 	return (c == ' ' || c == '\t' || c == '\n');
-// }
-// char	**ft_split(char *str)
-// {
-// 	int		i;
-// 	int		j;
-// 	int		a;
-// 	int		word;
-// 	int		start;
-// 	char	**fin;
-// 	i = 0;
-// 	word = 0;
-// 	while (str[i])
-// 	{
-// 		while (str[i] && is_sep(str[i]))
-// 			i++;
-// 		if (str[i])
-// 			word++;
-// 		while (str[i] && !is_sep(str[i]))
-// 			i++;
-// 	}
-// 	fin = malloc(sizeof(char *) * (word + 1));
-// 	if (!fin)
-// 		return (NULL);
-// 	i = 0;
-// 	j = 0;
-// 	while (str[i])
-// 	{
-// 		while (str[i] && is_sep(str[i]))
-// 			i++;
-// 		if (str[i])
-// 		{
-// 			start = i;
-// 			a = 0;
-// 			while (str[i] && !is_sep(str[i]))
-// 				i++;
-// 			fin[j] = malloc(sizeof(char) * (i - start + 1));
-// 			if (!fin[j])
-// 				return (NULL);
-// 			while (start < i)
-// 				fin[j][a++] = str[start++];
-// 			fin[j][a] = '\0';
-// 			j++;
-// 		}
-// 	}
-// 	fin[j] = NULL;
-// 	return (fin);
-// }
+#include <stdlib.h>
 
+int	is_sep(char c)
+{
+	return (c == ' ' || c == '\t' || c == '\n');
+}
+char	**ft_split(char *str)
+{
+	int		i;
+	int		j;
+	int		a;
+	int		word;
+	int		start;
+	char	**fin;
+	i = 0;
+	word = 0;
+	while (str[i])
+	{
+		while (str[i] && is_sep(str[i]))
+			i++;
+		if (str[i])
+			word++;
+		while (str[i] && !is_sep(str[i]))
+			i++;
+	}
+	fin = malloc(sizeof(char *) * (word + 1));
+	if (!fin)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (str[i])
+	{
+		while (str[i] && is_sep(str[i]))
+			i++;
+		if (str[i])
+		{
+			start = i;
+			a = 0;
+			while (str[i] && !is_sep(str[i]))
+				i++;
+			fin[j] = malloc(sizeof(char) * (i - start + 1));
+			if (!fin[j])
+				return (NULL);
+			while (start < i)
+				fin[j][a++] = str[start++];
+			}
+			fin[j][a] = '\0';
+			j++;
+		}
+	fin[j] = NULL;
+	return (fin);
+}

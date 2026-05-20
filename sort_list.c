@@ -31,7 +31,7 @@
 // 	return (a <= b);
 // }
 
-#include "ft_list.h"
+// #include "ft_list.h"
 
 // t_list	*sort_list(t_list *lst, int (*cmp)(int, int))
 // {
@@ -73,23 +73,155 @@
 // 	return (begin);
 // }
 
-t_list	*sort_list(t_list *lst, int (*cmp)(int, int))
-{
-	int		temp;
-	t_list	*begin;
+// t_list	*sort_list(t_list *lst, int (*cmp)(int, int))
+// {
+// 	int		temp;
+// 	t_list	*begin;
 
-	begin = lst;
-	while (lst && lst->next)
+// 	begin = lst;
+// 	while (lst && lst->next)
+// 	{
+// 		if (cmp(lst->data, lst->next->data))
+// 			lst = lst->next;
+// 		else
+// 		{
+// 			temp = lst->data;
+// 			lst->data = lst->next->data;
+// 			lst->next->data = temp;
+// 			lst = begin;
+// 		}
+// 	}
+// 	return (begin);
+// }
+
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct s_list
+{
+	int				data;
+	struct s_list	*next;
+}t_list;
+
+// t_list	*sort_list(t_list *lst, int (*cmp)(int, int))
+// {
+// 	int		temp;
+// 	t_list	*begin;
+
+// 	begin = lst;
+// 	while (lst && lst->next)
+// 	{
+// 		if (cmp(lst->data, lst->next->data))
+// 			lst = lst->next;
+// 		else
+// 		{
+// 			temp = lst->data;
+// 			lst->data = lst->next->data;
+// 			lst->next->data = temp;
+// 			lst = begin;
+// 		}
+// 	}
+// 	return (begin);
+// }
+
+// /* comparison function  */
+// /* ascending order		*/
+// int	cmp(int a, int b)
+// {
+// 	return (a <= b);
+// }
+
+// /* create new node */
+// t_list	*new_node(int value)
+// {
+// 	t_list	*node;
+
+// 	node = malloc(sizeof(t_list));
+// 	node->data = value;
+// 	node->next = NULL;
+// 	return (node);
+// }
+
+// /* print list */
+// void	print_list(t_list *lst)
+// {
+// 	while (lst)
+// 	{
+// 		printf("%d ", lst->data);
+// 		lst = lst->next;
+// 	}
+// 	printf("\n");
+// }
+
+// int	main(void)
+// {
+// 	t_list	*a;
+// 	t_list	*b;
+// 	t_list	*c;
+// 	t_list	*d;
+
+// 	a = new_node(-121);
+// 	b = new_node(3);
+// 	c = new_node(17);
+// 	d = new_node(1);
+
+// 	a->next = b;
+// 	b->next = c;
+// 	c->next = d;
+
+// 	printf("Before sorting:\n");
+// 	print_list(a);
+
+// 	a = sort_list(a, cmp);
+
+// 	printf("After sorting:\n");
+// 	print_list(a);
+
+// 	return (0);
+// }
+
+// t_list	*sort_list(t_list* lst, int (*cmp)(int, int))
+// {
+// 	int temp;
+// 	t_list *r;
+
+// 	r = lst;
+
+// 	while(lst && lst->next)
+// 	{
+// 		if(cmp(lst->data, lst->next->data))
+// 		{
+// 			lst = lst->next;
+// 		}
+// 		else{
+// 			temp = lst->data;
+// 			lst->data = lst->next->data;
+// 			lst->next->data = temp;
+// 			lst = r;
+// 		}
+// 	}
+// 	return r;
+// }
+
+t_list	*sort_list(t_list* lst, int (*cmp)(int, int))
+{
+	int t;
+	t_list *s;
+
+	s = lst;
+
+	while(lst && lst->next)
 	{
-		if (cmp(lst->data, lst->next->data))
-			lst = lst->next;
-		else
+		if(cmp(lst->data, lst->next->data))
 		{
-			temp = lst->data;
+			lst = lst->next;
+		}
+		else{
+			t = lst->data;
 			lst->data = lst->next->data;
-			lst->next->data = temp;
-			lst = begin;
+			lst->next->data = t;
+			lst = s;
 		}
 	}
-	return (begin);
+	return s;
 }
